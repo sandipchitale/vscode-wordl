@@ -1,0 +1,78 @@
+<div class="wrapper">
+  <div class="p-d-flex p-flex-column">
+    <table style="width: 99%;">
+      <ng-container *ngIf="letterAndStateArrayArray && letterAndStateArrayArray.length > 0">
+        <ng-container *ngFor="let letterAndStateArray of letterAndStateArrayArray">
+          <tr>
+            <ng-container *ngFor="let i of [0, 1, 2, 3, 4]">
+              <td class="p-p-4" [ngClass]="'w-' + letterAndStateArray[i].state" style="text-align: center;">
+                <span>{{ letterAndStateArray[i].symbol}} </span>
+              </td>
+            </ng-container>
+          </tr>
+        </ng-container>
+      </ng-container>
+      <tr>
+        <td colspan="5" style="text-align: center;">
+          <button pButton type="button" class="p-m-2 p-button-success" icon="pi pi-arrow-up" (click)="computeRegexps()"
+          [disabled]="cannotComputeRegexps()"></button>
+          <button pButton type="button" class="p-m-2 p-button-danger" icon="pi pi-times" (click)="reset()"></button>
+        </td>
+      </tr>
+      <tr>
+        <ng-container *ngFor="let i of [0, 1, 2, 3, 4]">
+          <td>
+            <p-dropdown
+              [options]="availableLettersArray[i]"
+              [(ngModel)]="chosenLetters[i]"
+              [disabled]="chosenLettersLocked[i].locked"
+              optionLabel="symbol"
+              baseZIndex="10000"
+              [style]="{ 'width': '50%' }">
+              <ng-template let-availableLetters pTemplate="item">
+                <div>{{ availableLetters.symbol }}</div>
+              </ng-template>
+            </p-dropdown>
+            <p-dropdown
+              [options]="letterStatesArrays[i]"
+              [(ngModel)]="chosenLetterStates[i]"
+              [disabled]="chosenLettersLocked[i].locked"
+              optionLabel="state"
+              baseZIndex="10000"
+              [style]="{ 'width': '50%' }">
+              <ng-template let-letterState pTemplate="item">
+                <div [class]="'w-button-' + letterState.state" >
+                  <div>{{ letterState.state }}</div>
+                </div>
+              </ng-template>
+            </p-dropdown>
+          </td>
+        </ng-container>
+      </tr>
+      <tr *ngIf="debug">
+        <ng-container *ngFor="let i of [0, 1, 2, 3, 4]">
+          <td>
+            <input
+              type="text"
+              class="p-mx-auto"
+              style="width: 100%;"
+              pInputText
+              [(ngModel)]="regexps[i]"
+              readonly
+              [disabled]="chosenLettersLocked[i].locked"/>
+          </td>
+        </ng-container>
+      </tr>
+      <tr *ngIf="debug">
+        <td colspan="5" style="text-align: center;" class="p-p-4 w-present">{{ mustHaveLetters | json }}</td>
+      </tr>
+    </table>
+  </div>
+  <p-listbox
+    [options]="candidateWords"
+    optionLabel="letters"
+    [readonly]="true"
+    styleClass="{{ candidateWords.length === 2 ? 'winner': '' }}"
+    [listStyle]="{ 'width': '100%', 'height': '100vh', 'overlay-y': 'scroll' }">
+  </p-listbox>
+</div>

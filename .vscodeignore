@@ -1,0 +1,11 @@
+*
+!README.md
+!dist
+!LICENSE
+.vscode
+e2e
+ext-src
+node_modules
+src
+*.vsix
+.angular

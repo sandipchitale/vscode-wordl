@@ -1,0 +1,88 @@
+html, body {
+  font-size: var(--vscode-font-size);
+  font-weight: var(--vscode-font-weight);
+  font-family: var(--vscode-font-family);
+  color: var(--vscode-editor-foreground) !important;
+  background-color: var(--vscode-editor-background) !important;
+}
+
+.p-listbox {
+  color:  var(--vscode-editor-foreground);
+  background: var(--vscode-editor-background);
+}
+
+.p-listbox {
+  border: 0px;
+  border-radius: 0;
+  .p-listbox-header {
+    color:  var(--vscode-editor-foreground);
+    background: var(--vscode-editor-background);
+  }
+}
+
+.p-dropdown-panel.p-component {
+  top: calc(100% + 5px) !important ;
+}
+
+.w-button-unknown {
+  font-weight: bold;
+}
+
+.w-button-absent {
+  font-weight: bold;
+  color: #787c7e;
+}
+
+.w-button-present {
+  font-weight: bold;
+  color: #c9b458;
+}
+
+.w-button-correct {
+  font-weight: bold;
+  color: #78b159;
+}
+
+.w-unknown {
+  font-weight: bold;
+  background-color: var(--vscode-editor-background);
+  color: var(--vscode-editor-foreground);
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.w-absent {
+  font-weight: bold;
+  background-color: #787c7e;
+  color: white;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.w-present {
+  font-weight: bold;
+  background-color: #c9b458;
+  color: white;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.w-correct {
+  font-weight: bold;
+  background-color: #78b159;
+  color: white;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.not-a-word {
+  box-shadow: 0 0 10px red;
+  color: red !important;
+}
+
+.winner {
+  box-shadow: 0 0 10px hotpink;
+  .p-listbox-item {
+    color: hotpink !important;
+  }
+}
